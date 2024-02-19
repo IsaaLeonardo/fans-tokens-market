@@ -31,6 +31,7 @@ const Heading = styled.h1`
   margin-top: 80px;
   margin-bottom: 50px;
   font-size: 34px;
+  color: #FFF;
 
   &::after {
     content: '';

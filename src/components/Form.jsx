@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 
 const SubmitButton = styled.input`
-  background-color: #9497FF;
+  background-color: #A281D0;
   border: none;
   width: 100%;
   padding: 10px;
@@ -13,7 +13,7 @@ const SubmitButton = styled.input`
   transition: background-color .3s ease;
 
   &:hover {
-    background-color: #7A7DFE;
+    background-color: #7F5DAD;
     cursor: pointer;
   }
 `
