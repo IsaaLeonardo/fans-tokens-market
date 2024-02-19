@@ -1,4 +1,5 @@
 import styled from '@emotion/styled'
+import Form from './components/Form'
 import Amico from './img/amico.svg'
 
 const Container = styled.div`
@@ -48,7 +49,10 @@ function App() {
         src={Amico}
         alt="Fans celebrating"
       />
-      <Heading>Hola Mundo</Heading>
+      <div>
+        <Heading>Hola Mundo</Heading>
+        <Form />
+      </div>
     </Container>
   )
 }
