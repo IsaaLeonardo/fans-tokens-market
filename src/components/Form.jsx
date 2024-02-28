@@ -1,4 +1,6 @@
 import styled from "@emotion/styled"
+import currencies from "../../data/currencies.js"
+import useCurrencySelect from "../hooks/useCurrencySelect.jsx"
 
 const SubmitButton = styled.input`
   background-color: #A281D0;
@@ -19,8 +21,12 @@ const SubmitButton = styled.input`
 `
 
 function Form() {
+  const [ CurrencySelect ] = useCurrencySelect('Elige tu moneda', currencies)
+
   return (
     <form>
+      <CurrencySelect />
+
       <SubmitButton
         type="submit"
         value="Calcular"
