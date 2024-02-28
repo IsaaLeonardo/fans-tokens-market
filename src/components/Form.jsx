@@ -24,6 +24,16 @@ const SubmitButton = styled.input`
 function Form() {
   const [ CurrencySelect, currenciesState ] = useCurrencySelect('Elige tu moneda', currencies)
 
+  useEffect(() => {
+    const callApi = async (url) => {
+      const response = await fetch(url)
+      
+      return response.json()
+    }
+
+    callApi(`https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD`)
+  }, [])
+
   return (
     <form>
       <CurrencySelect />
