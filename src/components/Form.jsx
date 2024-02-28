@@ -1,7 +1,7 @@
 import styled from "@emotion/styled"
 import currencies from "../../data/currencies.js"
 import useCurrencySelect from "../hooks/useCurrencySelect.jsx"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 const SubmitButton = styled.input`
   background-color: #A281D0;
@@ -23,12 +23,21 @@ const SubmitButton = styled.input`
 
 function Form() {
   const [ CurrencySelect, currenciesState ] = useCurrencySelect('Elige tu moneda', currencies)
+  const [ cryptos, setCryptos ] = useState([])
 
   useEffect(() => {
     const callApi = async (url) => {
       const response = await fetch(url)
-      
-      return response.json()
+      const result = await response.json()
+
+      const cryptos = result.Data.map(crypto => {
+        return {
+          id: crypto.CoinInfo.Name,
+          name: crypto.CoinInfo.FullName
+        }
+      })
+
+      setCryptos(cryptos)
     }
 
     callApi(`https://min-api.cryptocompare.com/data/top/totalvolfull?limit=10&tsym=USD`)
