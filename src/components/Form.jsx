@@ -22,8 +22,10 @@ const SubmitButton = styled.input`
 `
 
 function Form() {
-  const [ CurrencySelect, currenciesState ] = useCurrencySelect('Elige tu moneda', currencies)
   const [ cryptos, setCryptos ] = useState([])
+
+  const [ CurrencySelect, currenciesState ] = useCurrencySelect('Elige tu moneda', currencies)
+  const [ CryptoSelect, cryptosState ] = useCurrencySelect('Elige tu criptomoneda', cryptos)
 
   useEffect(() => {
     const callApi = async (url) => {
@@ -46,6 +48,7 @@ function Form() {
   return (
     <form>
       <CurrencySelect />
+      <CryptoSelect />
 
       <SubmitButton
         type="submit"
