@@ -48,6 +48,7 @@ const Heading = styled.h1`
 function App() {
   const [ currencies, setCurrencies ] = useState({})
   const [ result, setResult ] = useState({})
+  const [ loading, setLoading ] = useState(false)
 
   useEffect(() => {
     if (Object.keys(currencies).length === 0) return
@@ -55,11 +56,16 @@ function App() {
     const { currency, crypto } = currencies
 
     const callApi = async () => {
+      setResult({})
+      setLoading(true)
+
       const url = `https://min-api.cryptocompare.com/data/pricemultifull?fsyms=${crypto}&tsyms=${currency}`
       const response = await fetch(url)
       const result = await response.json()
 
       setResult(result.DISPLAY[crypto][currency])
+
+      setLoading(false)
     }
 
     callApi()
@@ -76,6 +82,12 @@ function App() {
         <Form
           setCurrencies={setCurrencies}
         />
+
+        {
+          loading && (
+            <p>Cargando...</p>
+          )
+        }
 
         {
           result.PRICE && (
