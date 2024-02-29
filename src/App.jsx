@@ -3,6 +3,7 @@ import Form from './components/Form'
 import Result from './components/Result'
 import Amico from './img/amico.svg'
 import { useEffect, useState } from 'react'
+import Spinner from './components/Spinner'
 
 const Container = styled.div`
   display: grid;
@@ -85,7 +86,7 @@ function App() {
 
         {
           loading && (
-            <p>Cargando...</p>
+            <Spinner />
           )
         }
 
