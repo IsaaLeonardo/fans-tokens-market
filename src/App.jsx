@@ -1,6 +1,7 @@
 import styled from '@emotion/styled'
 import Form from './components/Form'
 import Amico from './img/amico.svg'
+import { useEffect, useState } from 'react'
 
 const Container = styled.div`
   display: grid;
@@ -44,6 +45,14 @@ const Heading = styled.h1`
 `
 
 function App() {
+  const [ currencies, setCurrencies ] = useState({})
+
+  useEffect(() => {
+    if (Object.keys(currencies).length === 0) return
+
+    console.log('Currencies updated!')
+  }, [currencies])
+
   return (
     <Container>
       <Image
@@ -52,7 +61,9 @@ function App() {
       />
       <div>
         <Heading>Hola Mundo</Heading>
-        <Form />
+        <Form
+          setCurrencies={setCurrencies}
+        />
       </div>
     </Container>
   )
