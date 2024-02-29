@@ -28,6 +28,8 @@ const ParagraphText = styled.p`
 
 const ImageContainer = styled.div`
   width: 120px;
+  display: flex;
+  align-items: center;
 
   img {
     max-width: 100%;
